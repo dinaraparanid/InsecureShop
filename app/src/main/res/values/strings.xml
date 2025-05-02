@@ -5,6 +5,7 @@
     <string name="msg_no_internet">No Internet</string>
     <string name="submit">Submit</string>
     <string name="login">Login</string>
+    <string name="invalid_credentials">Invalid username and password</string>
 
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
@@ -24,4 +25,6 @@
     <string name="txt_ok">Ok</string>
     <string name="webview">Webview</string>
     <string name="aws_Identity_pool_ID">us-east-1:7e9426f7-42af-4717-8689-00a9a4b65c1c</string>
+    <string name="about_us_btn">About InsecureShop</string>
+    <string name="about_us_description">InsecureShop is an intentionally designed vulnerable android app built in Kotlin.</string>
 </resources>

@@ -1,20 +1,7 @@
 package com.insecureshop
 
 import android.app.Application
-import android.content.Context
-import android.util.Log
+import dagger.hilt.android.HiltAndroidApp
 
-
-class InsecureShopApp : Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-//        invokePlugins()
-    }
-
-    private fun invokePlugins() {
-
-    }
-
-
-}
+@HiltAndroidApp
+class InsecureShopApp : Application()
