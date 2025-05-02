@@ -11,3 +11,4 @@ local.properties
 *.json
 .kotlin
 .idea
+app/src/insecure_shop
