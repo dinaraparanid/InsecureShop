@@ -26,8 +26,8 @@ android {
         // Should be stored on the server side,
         // left here only for educational purposes
         buildFeatures.buildConfig = true
-        buildConfigField 'String', 'USERNAME', localProperties['username']
-        buildConfigField 'String', 'PASSWORD', localProperties['password']
+        buildConfigField 'String', 'USERNAME', "\"${localProperties['username']}\""
+        buildConfigField 'String', 'PASSWORD', "\"${localProperties['password']}\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
