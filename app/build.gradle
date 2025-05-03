@@ -4,6 +4,7 @@ plugins {
     alias libs.plugins.hilt
     alias libs.plugins.kapt
     alias libs.plugins.ksp
+    alias libs.plugins.sonarqube
     id 'kotlin-parcelize'
 }
 
@@ -60,6 +61,14 @@ android {
 
     kotlinOptions {
         jvmTarget = '17'
+    }
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "dinaraparanid_InsecureShop"
+        property "sonar.organization", "paranid5"
+        property "sonar.host.url", "https://sonarcloud.io"
     }
 }
 
