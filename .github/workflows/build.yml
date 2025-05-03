@@ -40,3 +40,8 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew build sonar --info
+      - name: Upload SonarQube problems report
+        uses: actions/upload-artifact@v3
+        with:
+          name: sonar-problems-report
+          path: ${{ github.workspace }}/build/reports/problems/problems-report.html
