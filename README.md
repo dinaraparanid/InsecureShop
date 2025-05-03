@@ -6,8 +6,7 @@
 <h4 align="center">Insecureshop - An Intentionally Vulnerable Android Application</h4>
 
 <p align="center">
-<a href="https://github.com/hax0rgb/InsecureShop/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat"></a>
-<a href="https://github.com/hax0rgb/InsecureShop/releases"><img src="https://img.shields.io/github/v/release/hax0rgb/InsecureShop"></a>
+<a href="https://sonarcloud.io/summary/new_code?id=dinaraparanid_InsecureShop"><img src="https://sonarcloud.io/api/project_badges/measure?project=dinaraparanid_InsecureShop&metric=alert_status"></a>
 </p>
 
 <p align="center">
