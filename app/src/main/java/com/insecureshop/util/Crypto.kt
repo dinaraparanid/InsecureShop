@@ -1,5 +1,6 @@
 package com.insecureshop.util
 
+import android.os.Build
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.util.Base64
@@ -26,7 +27,7 @@ class Crypto @Inject constructor() {
         .apply { load(null) }
 
     private fun createKey(alias: String): SecretKey = KeyGenerator
-        .getInstance(ALGORITHM)
+        .getInstance(ALGORITHM, "AndroidKeyStore")
         .apply {
             init(
                 KeyGenParameterSpec.Builder(
@@ -36,6 +37,7 @@ class Crypto @Inject constructor() {
                     .setBlockModes(BLOCK_MODE)
                     .setEncryptionPaddings(PADDING)
                     .setRandomizedEncryptionRequired(true)
+                    .setUserAuthenticationRequired(false)
                     .build()
             )
         }
