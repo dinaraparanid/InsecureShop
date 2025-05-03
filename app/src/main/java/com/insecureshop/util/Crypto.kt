@@ -36,7 +36,6 @@ class Crypto @Inject constructor() {
                     .setBlockModes(BLOCK_MODE)
                     .setEncryptionPaddings(PADDING)
                     .setRandomizedEncryptionRequired(true)
-                    .setUserAuthenticationRequired(false)
                     .build()
             )
         }
