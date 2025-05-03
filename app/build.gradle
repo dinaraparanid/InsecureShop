@@ -36,7 +36,7 @@ android {
         create("release") {
             keyAlias = localProperties['signingKeyAlias']
             keyPassword = localProperties['signingPassword']
-            storeFile = file("insecure_shop.jks.jks")
+            storeFile = file("insecure_shop.jks")
             storePassword = localProperties['signingPassword']
         }
     }
