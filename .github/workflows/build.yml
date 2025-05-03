@@ -34,8 +34,8 @@ jobs:
         run: chmod +x ./gradlew
       - name: Add local.properties
         run: echo "${{ secrets.LOCAL_PROPERTIES }}" > ${{ github.workspace }}/local.properties
-      - name: Check local.properties
-        run: cat ${{ github.workspace }}/local.properties
+      - name: Add signing keystore
+        run: echo "${{ secrets.KEYSTORE }}" | base64 --decode > ${{ github.workspace }}/app/insecure_shop.jks
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
