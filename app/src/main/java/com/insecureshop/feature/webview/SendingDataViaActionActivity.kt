@@ -9,9 +9,6 @@ import com.insecureshop.R
 import com.insecureshop.databinding.ActivityImplicitIntentForNonExportedBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-// Inlined (no static field) when decompiled to Java with JADX
-private const val REDIRECT_URL = "https://www.insecureshop.com/"
-
 @AndroidEntryPoint
 class SendingDataViaActionActivity : AppCompatActivity() {
 
@@ -27,12 +24,14 @@ class SendingDataViaActionActivity : AppCompatActivity() {
     }
 
     private fun onSendData() {
-        val intent = Intent(WebViewActivity.INTENT_ACTION)
-        intent.putExtra(WebViewActivity.EXTRA_URL, REDIRECT_URL)
+        val intent = Intent(this, WebViewActivity::class.java)
+            .setAction(WebViewActivity.INTENT_ACTION)
+            .putExtra(WebViewActivity.EXTRA_URL, DEFAULT_HOST)
 
         try {
             startActivity(intent)
         } catch (_: ActivityNotFoundException) {
+            // ignore
         }
     }
 }

@@ -16,7 +16,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 // Inlined (no static field) when decompiled to Java with JADX
 private const val USER_AGENT = "Mozilla/5.0 (Linux; Android 4.1.1; Galaxy Nexus Build/JRO03C) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.65 Mobile Safari/537.36"
-private const val VALID_HOST = "https://www.insecureshopapp.com"
 
 @AndroidEntryPoint
 class WebViewActivity : AppCompatActivity() {
@@ -58,7 +57,7 @@ class WebViewActivity : AppCompatActivity() {
                 override fun shouldOverrideUrlLoading(
                     view: WebView?,
                     request: WebResourceRequest?,
-                ): Boolean = request?.url?.host != VALID_HOST
+                ): Boolean = request?.url?.host != DEFAULT_HOST
             }
         }
 

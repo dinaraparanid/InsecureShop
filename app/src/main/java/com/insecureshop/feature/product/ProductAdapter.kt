@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.insecureshop.R
 import com.insecureshop.databinding.ProductItemBinding
-import com.insecureshop.feature.webview.PrivateActivity
 import com.insecureshop.feature.webview.WebViewActivity
 import com.insecureshop.util.Util
 
@@ -65,10 +64,9 @@ class ProductAdapter(
         }
 
         holder.binding.moreInfo.setOnClickListener {
-            val intent = Intent(context, WebViewActivity::class.java).apply {
-                action = WebViewActivity.INTENT_ACTION
-                putExtra(WebViewActivity.EXTRA_URL, prodDetail.url)
-            }
+            val intent = Intent(context, WebViewActivity::class.java)
+                .setAction(WebViewActivity.INTENT_ACTION)
+                .putExtra(WebViewActivity.EXTRA_URL, prodDetail.url)
 
             context.startActivity(intent)
         }
