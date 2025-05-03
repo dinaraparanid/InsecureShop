@@ -32,6 +32,8 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
+      - name: Add local.properties
+        run: echo "${{ secrets.LOCAL_PROPERTIES }}" > ./local.properties
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
