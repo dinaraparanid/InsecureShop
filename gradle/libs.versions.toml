@@ -8,7 +8,6 @@ glide = "4.16.0"
 gson = "2.13.1"
 kotlin = "2.1.20"
 material = "1.12.0"
-uploadservice = "4.9.4"
 hilt = "2.56.2"
 webkit = "1.13.0"
 sonarqube = "6.0.1.5171"
@@ -24,7 +23,6 @@ glide-compiler = { group = "com.github.bumptech.glide", name = "ksp", version.re
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
-uploadservice = { module = "net.gotev:uploadservice", version.ref = "uploadservice" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

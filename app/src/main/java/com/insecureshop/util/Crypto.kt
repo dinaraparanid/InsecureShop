@@ -4,22 +4,26 @@ import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.util.Base64
 import java.security.KeyStore
+import java.security.SecureRandom
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
-import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.GCMParameterSpec
 import javax.inject.Inject
 import javax.inject.Singleton
 
 private const val ALGORITHM = KeyProperties.KEY_ALGORITHM_AES
-private const val BLOCK_MODE = KeyProperties.BLOCK_MODE_CBC
-private const val PADDING = KeyProperties.ENCRYPTION_PADDING_PKCS7
+private const val BLOCK_MODE = KeyProperties.BLOCK_MODE_GCM
+private const val PADDING = KeyProperties.ENCRYPTION_PADDING_NONE
 private const val TRANSFORMATION = "$ALGORITHM/$BLOCK_MODE/$PADDING"
+private const val GCM_TAG_LENGTH = 128
+private const val GCM_IV_LENGTH = 12
 private val CHARSET = Charsets.UTF_8
 
 @Singleton
 class Crypto @Inject constructor() {
     private val cipher = Cipher.getInstance(TRANSFORMATION)
+    private val secureRandom = SecureRandom()
 
     private val keyStore = KeyStore
         .getInstance("AndroidKeyStore")
@@ -57,9 +61,10 @@ class Crypto @Inject constructor() {
 
     fun decrypt(alias: String, value: String): String {
         val bytes = Base64.decode(value, Base64.DEFAULT)
-        val iv = bytes.copyOfRange(0, cipher.blockSize)
-        val data = bytes.copyOfRange(cipher.blockSize, bytes.size)
-        cipher.init(Cipher.DECRYPT_MODE, getKey(alias), IvParameterSpec(iv))
-        return cipher.doFinal(data).toString(CHARSET)
+        val iv = bytes.copyOfRange(0, GCM_IV_LENGTH)
+        val encryptedData = bytes.copyOfRange(GCM_IV_LENGTH, bytes.size)
+        val gcmParameterSpec = GCMParameterSpec(GCM_TAG_LENGTH, iv)
+        cipher.init(Cipher.DECRYPT_MODE, getKey(alias), gcmParameterSpec)
+        return cipher.doFinal(encryptedData).toString(CHARSET)
     }
 }

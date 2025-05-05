@@ -82,8 +82,6 @@ dependencies {
 
     implementation libs.gson
 
-    implementation libs.uploadservice
-
     implementation libs.material
 
     implementation libs.glide
