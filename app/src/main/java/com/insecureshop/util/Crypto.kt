@@ -23,7 +23,6 @@ private val CHARSET = Charsets.UTF_8
 @Singleton
 class Crypto @Inject constructor() {
     private val cipher = Cipher.getInstance(TRANSFORMATION)
-    private val secureRandom = SecureRandom()
 
     private val keyStore = KeyStore
         .getInstance("AndroidKeyStore")
